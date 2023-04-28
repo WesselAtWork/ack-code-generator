@@ -60,7 +60,7 @@ aws:
     # Secret stringData key that contains the credentials
     secretKey: "credentials"
     # Profile used for AWS credentials
-    profile: "default"  
+    profile: "default"
 
 # log level for the controller
 log:
@@ -97,3 +97,113 @@ serviceAccount:
   name: {{ .ServiceAccountName }}
   annotations: {}
     # eks.amazonaws.com/role-arn: arn:aws:iam::AWS_ACCOUNT_ID:role/IAM_ROLE_NAME
+
+# global:
+#   default:
+#     image:
+#       pullPolicy: IfNotPresent
+#       pullSecrets: []
+#     deployment:
+#       annotations: {}
+#       labels: {}
+#       nodeSelector:
+#         kubernetes.io/os: linux
+#       tolerations: []
+#       affinity: {}
+#       priorityClassName: ""
+#     role:
+#       labels: {}
+#     metrics:
+#       service:
+#         create: false
+#         type: "ClusterIP"
+#     resources:
+#       requests:
+#         memory: "64Mi"
+#         cpu: "50m"
+#       limits:
+#         memory: "128Mi"
+#         cpu: "100m"
+#     aws:
+#       region: ""
+#       endpoint_url: ""
+#       credentials:
+#         secretName: ""
+#         secretKey: "credentials"
+#         profile: "default"
+#     log:
+#       enable_development_logging: false
+#       level: info
+#     installScope: cluster
+#     resourceTags:
+#       - services.k8s.aws/controller-version=%CONTROLLER_SERVICE%-%CONTROLLER_VERSION%
+#       - services.k8s.aws/namespace=%K8S_NAMESPACE%
+#     deletionPolicy: delete
+#     reconcile:
+#       defaultResyncPeriod: 0
+#       resourceResyncPeriods: {}
+#     serviceAccount:
+#       create: true
+#       name: {{ .ServiceAccountName }}
+#       annotations: {}
+#
+#   append:
+#     image:
+#       pullSecrets:
+#     deployment:
+#       annotations:
+#       labels:
+#       nodeSelector:
+#       tolerations:
+#       affinity:
+#     role:
+#       labels:
+#     resourceTags:
+#     serviceAccount:
+#       annotations:
+#
+#   overide:
+#     image:
+#       pullPolicy:
+#       pullSecrets:
+#     deployment:
+#       annotations:
+#       labels:
+#       nodeSelector:
+#       tolerations:
+#       affinity:
+#       priorityClassName:
+#     role:
+#       labels:
+#     metrics:
+#       service:
+#         create:
+#         type:
+#     resources:
+#       requests:
+#         memory:
+#         cpu:
+#       limits:
+#         memory:
+#         cpu:
+#     aws:
+#       region:
+#       endpoint_url:
+#       credentials:
+#         secretName:
+#         secretKey:
+#         profile:
+#     log:
+#       enable_development_logging:
+#       level:
+#     installScope:
+#     resourceTags:
+#     deletionPolicy:
+#     reconcile:
+#       defaultResyncPeriod:
+#       resourceResyncPeriods:
+#     serviceAccount:
+#       create:
+#       name:
+#       annotations:
+#

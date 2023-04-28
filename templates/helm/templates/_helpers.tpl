@@ -46,3 +46,16 @@ If release name contains chart name it will be used as a full name.
 {{- define "aws.credentials.path" -}}
 {{- printf "%s/%s" (include "aws.credentials.secret_mount_path" .) .Values.aws.credentials.secretKey -}}
 {{- end -}}
+
+{{/* Global Default/Append/Overide Helper */}}
+{{- define "global-var" -}}
+{{- $ctx := (index 0 .) -}}
+{{- $var := (index 1 .) -}}
+{{- $baseVar := (print ".Values" $var) -}}
+{{- $globalOverideVar := (print ".Values.global.overide" $var) -}}
+{{- $globalDefaultVar := (print ".Values.global.default" $var) -}}
+{{- $globalAppendVar := (print ".Values.global.append" $var) -}}
+{{- with (get $ctx $globalOverideVar | default (get $ctx $baseVar) | default (get $ctx $globalDefaultVar)) -}}
+{{- toYaml . -}}
+{{- end -}}
+{{- end -}}
